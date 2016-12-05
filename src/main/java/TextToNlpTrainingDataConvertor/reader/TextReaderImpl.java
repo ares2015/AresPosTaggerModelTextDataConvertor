@@ -1,8 +1,8 @@
 package TextToNlpTrainingDataConvertor.reader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,22 +12,35 @@ import java.util.Scanner;
 public class TextReaderImpl implements TextReader {
 
     public List<String> readText() {
-        List<String> sentences = new ArrayList<String>();
+        List<String> sentences = null;
+        String wholeText = "";
+        BufferedReader br = null;
         try {
-            File file = new File("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\TextData.txt");
-            Scanner scanner = new Scanner(file);
-            scanner.useDelimiter("[.?!]");
-            while (scanner.hasNext()) {
-                String sentence = scanner.next();
-                sentence = sentence.replaceAll("\\r?\\n", " ");
-                // uncomment for nicer output
-                sentence = sentence.trim();
-                sentences.add(sentence);
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
+            br = new BufferedReader(new FileReader("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\TextData.txt"));
+        } catch (final FileNotFoundException e) {
             e.printStackTrace();
+        }
+        try {
+            String testDataRow = br.readLine();
+            while (testDataRow != null) {
+                wholeText += testDataRow;
+                testDataRow += " ";
+                testDataRow = br.readLine();
+            }
+            sentences = Arrays.asList(wholeText.split("[\\.\\!\\?]"));
+
+        } catch (final IOException e) {
+            e.printStackTrace();
+
         }
         return sentences;
     }
 }
+
+
+
+
+
+
+
+
