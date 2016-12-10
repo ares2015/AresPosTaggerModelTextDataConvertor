@@ -23,8 +23,10 @@ public class TextReaderImpl implements TextReader {
         try {
             String testDataRow = br.readLine();
             while (testDataRow != null) {
-                wholeText += testDataRow;
-                testDataRow += " ";
+                if(!"".equals(testDataRow)){
+                    wholeText += testDataRow;
+                    testDataRow += " ";
+                }
                 testDataRow = br.readLine();
             }
             sentences = Arrays.asList(wholeText.split("[\\.\\!\\?]"));
