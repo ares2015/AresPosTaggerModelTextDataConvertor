@@ -1,5 +1,7 @@
 package TextToNlpTrainingDataConvertor.main;
 
+import TextToNlpTrainingDataConvertor.preprocessing.SentencePreprocessorImpl;
+import TextToNlpTrainingDataConvertor.preprocessing.SentencesPreprocessor;
 import TextToNlpTrainingDataConvertor.reader.TextReader;
 import TextToNlpTrainingDataConvertor.reader.TextReaderImpl;
 import TextToNlpTrainingDataConvertor.tokenizing.Tokenizer;
@@ -15,36 +17,26 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
 
     private TextReader textReader;
 
-    private Tokenizer tokenizer;
+    private SentencesPreprocessor sentencesPreprocessor;
 
-    public TextToNlpTrainingDataConvertorImpl(TextReader textReader, Tokenizer tokenizer) {
+    public TextToNlpTrainingDataConvertorImpl(TextReader textReader, SentencesPreprocessor sentencesPreprocessor) {
         this.textReader = textReader;
-        this.tokenizer = tokenizer;
+        this.sentencesPreprocessor = sentencesPreprocessor;
     }
 
     public static void main(String[] args) {
         TextReader textReader = new TextReaderImpl();
         Tokenizer tokenizer = new TokenizerImpl();
-        TextToNlpTrainingDataConvertor textToNlpTrainingDataConvertor = new TextToNlpTrainingDataConvertorImpl(textReader, tokenizer);
+        SentencesPreprocessor sentencesPreprocessor = new SentencePreprocessorImpl(tokenizer);
+        TextToNlpTrainingDataConvertor textToNlpTrainingDataConvertor = new TextToNlpTrainingDataConvertorImpl(textReader, sentencesPreprocessor);
+
         textToNlpTrainingDataConvertor.convert();
     }
 
     public void convert() {
-        List<String> processedSentences = new ArrayList<String>();
         List<String> sentences = textReader.readText();
-        for (String sentence : sentences) {
-            if (sentence.contains("(")) {
-                sentence = tokenizer.removeBrackets(sentence, '(', ')');
-            }
-            if (sentence.contains("[")) {
-                sentence = tokenizer.removeBrackets(sentence, '[', ']');
-            }
-            if (sentence.contains("\"")) {
-                sentence = tokenizer.removeDoubleQuotes(sentence);
-            }
-            sentence = tokenizer.removeEmptyStrings(sentence);
-            System.out.println(sentence);
-        }
+        sentencesPreprocessor.preprocess(sentences);
     }
+
 
 }

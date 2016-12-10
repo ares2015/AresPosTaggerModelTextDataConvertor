@@ -18,8 +18,7 @@ public class TokenizerImpl implements Tokenizer {
                 isNestedSequence = true;
             } else if (bracket2 == chars[i]) {
                 isNestedSequence = false;
-            }
-            else if (bracket1 != chars[i] && !isNestedSequence) {
+            } else if (bracket1 != chars[i] && !isNestedSequence) {
                 filteredSentence.append(String.valueOf(chars[i]));
             }
         }
@@ -34,15 +33,15 @@ public class TokenizerImpl implements Tokenizer {
         List<String> list = Arrays.asList(string.split("\\ "));
         final List<String> newList = new ArrayList<String>();
         StringBuilder newString = new StringBuilder();
-        for(final String s : list){
-            if(!(s.equals(""))){
+        for (final String s : list) {
+            if (!(s.equals(""))) {
                 newList.add(s);
             }
         }
 
-        for(int i = 0; i < newList.size(); i++){
+        for (int i = 0; i < newList.size(); i++) {
             newString.append(newList.get(i));
-            if(i < newList.size() - 1){
+            if (i < newList.size() - 1) {
                 newString.append(" ");
             }
         }
