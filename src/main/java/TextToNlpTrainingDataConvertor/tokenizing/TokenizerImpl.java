@@ -1,5 +1,9 @@
 package TextToNlpTrainingDataConvertor.tokenizing;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by Oliver on 12/10/2016.
  */
@@ -22,5 +26,27 @@ public class TokenizerImpl implements Tokenizer {
         return filteredSentence.toString();
     }
 
+    public String removeDoubleQuotes(String string) {
+        return string.replace("\"", "");
+    }
+
+    public String removeEmptyStrings(String string) {
+        List<String> list = Arrays.asList(string.split("\\ "));
+        final List<String> newList = new ArrayList<String>();
+        StringBuilder newString = new StringBuilder();
+        for(final String s : list){
+            if(!(s.equals(""))){
+                newList.add(s);
+            }
+        }
+
+        for(int i = 0; i < newList.size(); i++){
+            newString.append(newList.get(i));
+            if(i < newList.size() - 1){
+                newString.append(" ");
+            }
+        }
+        return newString.toString();
+    }
 
 }

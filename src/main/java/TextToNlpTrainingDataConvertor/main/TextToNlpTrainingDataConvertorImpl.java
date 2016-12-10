@@ -39,6 +39,10 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
             if (sentence.contains("[")) {
                 sentence = tokenizer.removeBrackets(sentence, '[', ']');
             }
+            if (sentence.contains("\"")) {
+                sentence = tokenizer.removeDoubleQuotes(sentence);
+            }
+            sentence = tokenizer.removeEmptyStrings(sentence);
             System.out.println(sentence);
         }
     }

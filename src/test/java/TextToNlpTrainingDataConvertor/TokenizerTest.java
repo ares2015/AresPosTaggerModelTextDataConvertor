@@ -20,8 +20,21 @@ public class TokenizerTest {
     }
 
     @Test
-    public void testRemoveNestedSentenceBrackets(){
+    public void testRemoveNestedSentenceBrackets() {
         String testString = "ab (c) d";
         assertEquals("ab  d", tokenizer.removeBrackets(testString, '(', ')'));
     }
+
+    @Test
+    public void testRemoveDoubleQuotes() {
+        System.out.println("\"king's ships\"");
+        assertEquals("king's ships", tokenizer.removeDoubleQuotes("\"king's ships\""));
+        System.out.println(tokenizer.removeDoubleQuotes("\"king's ships\""));
+    }
+
+    @Test
+    public void testRemoveEmptyStrings() {
+        assertEquals("a bc d e", tokenizer.removeEmptyStrings("a   bc  d e"));
+    }
+
 }
