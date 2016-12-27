@@ -7,8 +7,10 @@ public interface Tokenizer {
 
     String removeBrackets(String string, char bracket1, char bracket2);
 
-    String removeDoubleQuotes(String string);
+    String removeDoubleQuotes(String sentence);
 
-    String removeEmptyStrings(String string);
+    String removeEmptyStrings(String sentence);
+
+    String removeCommaDotQuestExplMark(final String sentence);
 
 }

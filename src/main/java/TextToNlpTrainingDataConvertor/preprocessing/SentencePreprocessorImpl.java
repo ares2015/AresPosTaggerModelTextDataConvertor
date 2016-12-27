@@ -31,6 +31,10 @@ public class SentencePreprocessorImpl implements SentencesPreprocessor {
             if (sentence.contains("\"")) {
                 sentence = tokenizer.removeDoubleQuotes(sentence);
             }
+//            if (sentence.contains("\\,") || sentence.contains("\\.") || sentence.contains("\\?") || sentence.contains("\\!")) {
+            if (sentence.contains(",") || sentence.contains(".") || sentence.contains("?") || sentence.contains("!")) {
+                sentence = tokenizer.removeCommaDotQuestExplMark(sentence);
+            }
             sentence = tokenizer.removeEmptyStrings(sentence);
             processedSentences.add(sentence);
             System.out.println(sentence);

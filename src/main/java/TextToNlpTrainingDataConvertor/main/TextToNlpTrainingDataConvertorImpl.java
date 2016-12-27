@@ -31,7 +31,7 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
     }
 
     public static void main(String[] args) {
-        System.setProperty("file.encoding","UTF-8");
+//        System.setProperty("file.encoding","UTF-8");
         TextReader textReader = new TextReaderImpl();
         Tokenizer tokenizer = new TokenizerImpl();
         SentencesPreprocessor sentencesPreprocessor = new SentencePreprocessorImpl(tokenizer);
