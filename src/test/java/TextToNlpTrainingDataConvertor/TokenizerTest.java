@@ -40,12 +40,4 @@ public class TokenizerTest {
         System.out.println(tokenizer.removeEmptyStrings("bob\u0000 dylan and bryan drink beer"));
     }
 
-    @Test
-    public void testRemoveCommaDotQuestExplMark() {
-        String sentence = "bob, dylan and bryan drink beer.";
-        System.out.println(sentence);
-        assertEquals("bob\u0000 dylan and bryan drink beer", tokenizer.removeCommaDotQuestExplMark(sentence));
-        System.out.println(tokenizer.removeCommaDotQuestExplMark(sentence));
-    }
-
 }

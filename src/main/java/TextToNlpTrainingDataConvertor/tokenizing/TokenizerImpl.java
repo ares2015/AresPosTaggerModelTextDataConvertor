@@ -47,17 +47,4 @@ public class TokenizerImpl implements Tokenizer {
         }
         return newString.toString();
     }
-
-    public String removeCommaDotQuestExplMark(String sentence) {
-        char[] charTmp;
-        charTmp = sentence.toCharArray();
-        final char[] charToken = new char[charTmp.length - 1];
-        for (int i = 0; i < charTmp.length - 1; i++) {
-            if(',' != charTmp[i] && '.' != charTmp[i] && '?' != charTmp[i] && '!' != charTmp[i])
-            charToken[i] = charTmp[i];
-        }
-        final String filteredSentence = new String(charToken);
-        return filteredSentence;
-    }
-
 }

@@ -11,6 +11,4 @@ public interface Tokenizer {
 
     String removeEmptyStrings(String sentence);
 
-    String removeCommaDotQuestExplMark(final String sentence);
-
 }
