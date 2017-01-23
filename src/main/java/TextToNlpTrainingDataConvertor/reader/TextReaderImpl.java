@@ -16,7 +16,7 @@ public class TextReaderImpl implements TextReader {
         String wholeText = "";
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\TextData.txt"));
+            br = new BufferedReader(new FileReader("C:\\Users\\oliver.eder\\Downloads\\books\\TextData.txt"));
         } catch (final FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -25,7 +25,7 @@ public class TextReaderImpl implements TextReader {
             while (testDataRow != null) {
                 if(!"".equals(testDataRow)){
                     wholeText += testDataRow;
-                    testDataRow += " ";
+                    wholeText += " ";
                 }
                 testDataRow = br.readLine();
             }
