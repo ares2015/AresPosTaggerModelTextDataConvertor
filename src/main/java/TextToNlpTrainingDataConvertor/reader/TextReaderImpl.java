@@ -1,10 +1,11 @@
 package TextToNlpTrainingDataConvertor.reader;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by Oliver on 12/3/2016.
@@ -16,7 +17,7 @@ public class TextReaderImpl implements TextReader {
         String wholeText = "";
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\oliver.eder\\Downloads\\books\\TextData.txt"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\TextData.txt"));
         } catch (final FileNotFoundException e) {
             e.printStackTrace();
         }

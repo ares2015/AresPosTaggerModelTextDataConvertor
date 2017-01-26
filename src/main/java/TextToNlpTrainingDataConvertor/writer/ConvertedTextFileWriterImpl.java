@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ConvertedTextFileWriterImpl implements ConvertedTextFileWriter {
 
-    private static final String FILENAME = "C:\\Users\\oliver.eder\\Downloads\\books\\HaikuMasterTextData.txt";
+    private static final String FILENAME = "C:\\Users\\Oliver\\Documents\\NlpTrainingData\\HaikuMasterTextData.txt";
 
     public void write(List<String> sentences) {
         BufferedWriter bw = null;
