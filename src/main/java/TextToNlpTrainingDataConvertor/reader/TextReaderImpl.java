@@ -27,6 +27,7 @@ public class TextReaderImpl implements TextReader {
                 if(!"".equals(testDataRow)){
                     wholeText += testDataRow;
                     wholeText += " ";
+                    System.out.println(testDataRow);
                 }
                 testDataRow = br.readLine();
             }
