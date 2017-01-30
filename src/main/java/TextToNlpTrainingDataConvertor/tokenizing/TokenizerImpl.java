@@ -9,6 +9,18 @@ import java.util.List;
  */
 public class TokenizerImpl implements Tokenizer {
 
+
+    public String removeSpecialCharacters(String token) {
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = token.toCharArray();
+        for (char c : chars) {
+            if (("'".equals(String.valueOf(c)) || "’".equals(String.valueOf(c))) || ((Character.isDigit(c) || Character.isLetter(c)))) {
+                stringBuilder.append(String.valueOf(c));
+            }
+        }
+        return stringBuilder.toString();
+    }
+
     public String removeBrackets(String token, char bracket1, char bracket2) {
         StringBuilder filteredSentence = new StringBuilder();
         char[] chars = token.toCharArray();

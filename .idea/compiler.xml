@@ -26,7 +26,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TextToNlpTrainingDataConvertor" target="1.5" />
+      <module name="TextToNlpTrainingDataConvertor" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -16,24 +16,40 @@ public class SentencePreprocessorImpl implements SentencesPreprocessor {
         this.tokenizer = tokenizer;
     }
 
-    public List<String> preprocess(List<String> sentences) {
-        List<String> processedSentences = new ArrayList<String>();
-        for (String sentence : sentences) {
-            if (sentence.contains("(")) {
-                sentence = tokenizer.removeBrackets(sentence, '(', ')');
-            }
-            if (sentence.contains("[")) {
-                sentence = tokenizer.removeBrackets(sentence, '[', ']');
-            }
-            if (sentence.contains("{")) {
-                sentence = tokenizer.removeBrackets(sentence, '{', '}');
-            }
-            if (sentence.contains("\"")) {
-                sentence = tokenizer.removeDoubleQuotes(sentence);
-            }
-            sentence = tokenizer.removeEmptyStrings(sentence);
-            processedSentences.add(sentence);
+    @Override
+    public String preprocess(String sentence) {
+        String[] tokTmp;
+        tokTmp = sentence.split("\\ ");
+        List<String> preprocessedTokens = new ArrayList<>();
+        for (String token : tokTmp) {
+            token = tokenizer.removeSpecialCharacters(token);
+            preprocessedTokens.add(token);
         }
-        return processedSentences;
+        final List<String> tokens = removeEmptyStringInSentence(preprocessedTokens);
+        return convertListToString(tokens);
+    }
+
+    private List<String> removeEmptyStringInSentence(List<String> filteredTokens) {
+        final List<String> listTokens = new ArrayList<String>();
+        for (final String token : filteredTokens) {
+            if (!token.equals("")) {
+                listTokens.add(token);
+            }
+        }
+        return listTokens;
+    }
+
+    private String convertListToString(List<String> list) {
+        String newString = "";
+        int i = 0;
+        for (String word : list) {
+            if (i < list.size() - 1) {
+                newString += word + " ";
+            } else {
+                newString += word;
+            }
+            i++;
+        }
+        return newString;
     }
 }

@@ -43,7 +43,11 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
 
     public void convert() {
         List<String> sentences = textReader.readText();
-        List<String> preprocessedSentences = sentencesPreprocessor.preprocess(sentences);
+        List<String> preprocessedSentences = new ArrayList<>();
+        for (String sentence : sentences) {
+            String preprocessedSentence = sentencesPreprocessor.preprocess(sentence);
+            preprocessedSentences.add(preprocessedSentence);
+        }
         convertedTextFileWriter.write(preprocessedSentences);
     }
 

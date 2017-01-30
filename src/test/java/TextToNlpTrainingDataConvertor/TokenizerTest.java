@@ -14,6 +14,12 @@ public class TokenizerTest {
     Tokenizer tokenizer = new TokenizerImpl();
 
     @Test
+    public void testRemoveSpecialCharacters() {
+        assertEquals("dog's", tokenizer.removeSpecialCharacters("dog's_*"));
+        assertEquals("I've", tokenizer.removeSpecialCharacters("I've"));
+    }
+
+    @Test
     public void testRemoveTextReferenceBrackets() {
         String testString = "[22][23]abc def";
         assertEquals("abc def", tokenizer.removeBrackets(testString, '[', ']'));

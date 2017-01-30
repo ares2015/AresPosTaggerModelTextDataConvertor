@@ -5,6 +5,8 @@ package TextToNlpTrainingDataConvertor.tokenizing;
  */
 public interface Tokenizer {
 
+    String removeSpecialCharacters(String token);
+
     String removeBrackets(String string, char bracket1, char bracket2);
 
     String removeDoubleQuotes(String sentence);
