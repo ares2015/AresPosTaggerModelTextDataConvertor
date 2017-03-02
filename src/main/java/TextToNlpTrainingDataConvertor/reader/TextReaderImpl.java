@@ -24,14 +24,14 @@ public class TextReaderImpl implements TextReader {
         try {
             String testDataRow = br.readLine();
             while (testDataRow != null) {
-                if(!"".equals(testDataRow)){
+                if (!"".equals(testDataRow)) {
                     wholeText += testDataRow;
                     wholeText += " ";
                     System.out.println(testDataRow);
                 }
                 testDataRow = br.readLine();
             }
-            sentences = Arrays.asList(wholeText.split("[\\.\\!\\?]"));
+            sentences = Arrays.asList(wholeText.split("[\\.\\!\\?\\;]"));
 
         } catch (final IOException e) {
             e.printStackTrace();
