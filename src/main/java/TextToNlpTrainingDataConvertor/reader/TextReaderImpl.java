@@ -17,7 +17,7 @@ public class TextReaderImpl implements TextReader {
         String wholeText = "";
         BufferedReader br = null;
         try {
-            br = new BufferedReader(new FileReader("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\TextData.txt"));
+            br = new BufferedReader(new FileReader("C:\\Users\\Oliver\\Documents\\NlpTrainingData\\AresPosTaggerModelData\\TextData.txt"));
         } catch (final FileNotFoundException e) {
             e.printStackTrace();
         }

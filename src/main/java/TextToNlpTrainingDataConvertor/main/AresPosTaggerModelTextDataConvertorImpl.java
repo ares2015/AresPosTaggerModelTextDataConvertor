@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Oliver on 12/3/2016.
  */
-public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingDataConvertor {
+public class AresPosTaggerModelTextDataConvertorImpl implements AresPosTaggerModelTextDataConvertor {
 
     private TextReader textReader;
 
@@ -23,8 +23,8 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
 
     private ConvertedTextFileWriter convertedTextFileWriter;
 
-    public TextToNlpTrainingDataConvertorImpl(TextReader textReader, SentencesPreprocessor sentencesPreprocessor,
-                                              ConvertedTextFileWriter convertedTextFileWriter) {
+    public AresPosTaggerModelTextDataConvertorImpl(TextReader textReader, SentencesPreprocessor sentencesPreprocessor,
+                                                   ConvertedTextFileWriter convertedTextFileWriter) {
         this.textReader = textReader;
         this.sentencesPreprocessor = sentencesPreprocessor;
         this.convertedTextFileWriter = convertedTextFileWriter;
@@ -36,9 +36,9 @@ public class TextToNlpTrainingDataConvertorImpl implements TextToNlpTrainingData
         Tokenizer tokenizer = new TokenizerImpl();
         SentencesPreprocessor sentencesPreprocessor = new SentencePreprocessorImpl(tokenizer);
         ConvertedTextFileWriter convertedTextFileWriter = new ConvertedTextFileWriterImpl();
-        TextToNlpTrainingDataConvertor textToNlpTrainingDataConvertor = new TextToNlpTrainingDataConvertorImpl(textReader,
+        AresPosTaggerModelTextDataConvertor aresPosTaggerModelTextDataConvertor = new AresPosTaggerModelTextDataConvertorImpl(textReader,
                 sentencesPreprocessor, convertedTextFileWriter);
-        textToNlpTrainingDataConvertor.convert();
+        aresPosTaggerModelTextDataConvertor.convert();
     }
 
     public void convert() {
